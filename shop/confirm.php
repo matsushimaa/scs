@@ -14,10 +14,10 @@
             予約が完了しました。
         </div>
         <div class="text-center">
-            <a href="reservation_status.php" class="btn btn-primary">予約状況画面へ</a>
+            <a href="./detail.php" class="btn btn-primary">予約状況画面へ</a>
         </div>
         <div class="text-center mt-3">
-            <a href="db_connect.php" class="btn btn-secondary">戻る</a>
+            <a href="./" class="btn btn-secondary">戻る</a>
         </div>
     </main>
 </body>

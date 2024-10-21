@@ -37,6 +37,7 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <thead>
                 <tr>
                     <th scope="col">時間</th>
+                    <th></th>
                     <th scope="col">名前</th>
                     <th scope="col">人数</th>
                 </tr>
@@ -53,6 +54,9 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             echo $start_time . '~' . $end_time;
                             ?>
                         </td>
+                        <td>
+                            <a href="input.php">予約</a>
+                        </td>
                         <td><?php echo htmlspecialchars($reservation['name']); ?></td>
                         <td><?php echo htmlspecialchars($reservation['people_count']); ?>人</td>
                     </tr>
@@ -60,7 +64,7 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </tbody>
         </table>
         <div class="text-center mt-3">
-            <a href="db_connect.php" class="btn btn-primary">予約画面に戻る</a>
+            <a href="./" class="btn btn-primary">予約画面に戻る</a>
         </div>
     </main>
 </body>
