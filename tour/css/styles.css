@@ -1,0 +1,94 @@
+table,
+th,
+td {
+  border: 1px solid #bebcbc;
+  border-collapse: collapse;
+  width: 350px;
+  height: 30px;
+
+}
+
+th {
+  font-size: 16px;
+}
+
+td {
+  font-size: 14px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.sele {
+  border: 1px solid #ccc;
+  width: 200px;
+  height: 25px;
+  padding: 3px;
+  margin: 3px;
+}
+
+.sele2 {
+  border: 1px solid #ccc;
+  width: 210px;
+  height: 34px;
+  padding: 3px;
+  margin: 3px;
+}
+
+
+/* Login */
+.login-button {
+  background-color: rgb(12, 121, 193);
+  color: white;
+  padding: 9px 18px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.login-button:hover {
+  background-color: rgb(10, 69, 141);
+}
+
+.login-button {
+  background-color: rgb(12, 121, 193);
+  color: white;
+  padding: 9px 18px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 40px;
+}
+
+.login-button:hover {
+  background-color: rgb(10, 69, 141);
+}
+
+.background-image {
+  /* width: 1450px;
+  height: 700px; */
+  background-image: url(../img/slick1.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.conta {
+  width: 400px;
+  /* height: 500px; */
+  border: 1px solid #000;
+  padding: 50px;
+  margin: 50px 50px;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.title {
+  color: white;
+  text-align: center;
+}
