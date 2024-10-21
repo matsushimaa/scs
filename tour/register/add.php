@@ -9,7 +9,7 @@ $tnum = $_POST['tnum'];
 function db_connect()
 {
     try {
-        $db = new PDO('mysql:dbname=tour; host=127.0.0.1; charset=utf8', 'root', '');
+        $db = new PDO('mysql:dbname=yoyakudb; host=127.0.0.1; charset=utf8', 'root', '');
         return $db;
     } catch (PDOException $e) {
         echo 'DB接続エラー:' . $e->getMessage();
@@ -20,7 +20,7 @@ function db_connect()
 function insert($tcoop, $tname, $tdate, $ttime, $tplace, $tnum)
 {
     $db = db_connect();
-    $sql = "INSERT INTO yoyaku(TCoop,TName,TDate,TTime,TPlace,TNum) VALUES(" . $tcoop . "," . "'$tname'" . "," . "'$tdate'" . "," . $ttime . "," . $tplace . "," . $tnum . ")";
+    $sql = "INSERT INTO tour_reservations(TCoop,TName,TDate,TTime,TPlace,TNum) VALUES(" . $tcoop . "," . "'$tname'" . "," . "'$tdate'" . "," . $ttime . "," . $tplace . "," . $tnum . ")";
 
     print("正常に登録が完了しました");
     $count = $db->query($sql);
@@ -29,6 +29,6 @@ function insert($tcoop, $tname, $tdate, $ttime, $tplace, $tnum)
 }
 
 //TODO:
-//insert($tcoop, $tname, $tdate, $ttime, $tplace, $tnum);
+insert($tcoop, $tname, $tdate, $ttime, $tplace, $tnum);
 
 header('Location: complete.php');

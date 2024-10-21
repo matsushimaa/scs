@@ -33,6 +33,7 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <main class="container">
         <h2 class="text-center p-3">予約状況</h2>
+        <a href="input.php">新規予約</a>
         <table class="table">
             <thead>
                 <tr>
