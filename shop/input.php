@@ -109,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <div class="mt-3 text-center">
             <a class="btn btn-outline-primary" href="detail.php">予約状況画面へ</a>
-            <a class="btn btn-outline-primary" href="../main.php">ホーム画面へ</a>
+            <a class="btn btn-outline-primary" href="index.php">ホーム画面へ</a>
         </div>
     </main>
 </body>
