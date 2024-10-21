@@ -11,7 +11,7 @@
             padding: 20px;
             margin-bottom: 200px;
             background-color: #f9f9f9;
-            background-image: url(main.jpg);
+            background-image: url(../images/main.jpg);
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
