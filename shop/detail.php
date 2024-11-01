@@ -23,7 +23,7 @@ $all_times = [];
 $start_time = strtotime('10:00');
 $end_time = strtotime('20:00');
 
-for ($time = $start_time; $time <= $end_time; $time += 3600) { // 3600秒（1時間）
+for ($time = $start_time; $time <= $end_time; $time += 3600) {
     $all_times[] = date('H:i', $time);
 }
 
@@ -32,8 +32,14 @@ $availability = [];
 foreach ($all_times as $time) {
     $availability[$time] = ['total_people' => 0]; // 初期値を設定
     foreach ($reservations as $reservation) {
-        if ($reservation['time'] === $time) {
-            $availability[$time]['total_people'] = $reservation['total_people'];
+        // 時間範囲を分割
+        list($start_time, $end_time) = explode('~', $reservation['time']);
+        $start_time = trim($start_time);
+        $end_time = trim($end_time);
+
+        // 現在の時間がこの範囲にあるかを確認
+        if ($time >= $start_time && $time < $end_time) {
+            $availability[$time]['total_people'] += $reservation['total_people'];
         }
     }
 }
@@ -79,15 +85,13 @@ foreach ($all_times as $time) {
                     <tr>
                         <td>
                             <?php
-                            // 時間の表示
-                            $start_time = $time; // 開始時刻
-                            $end_time = date('H:i', strtotime($time) + 3600); // 終了時刻（1時間後）
+                            $start_time = $time;
+                            $end_time = date('H:i', strtotime($time) + 3600);
                             echo $start_time . '~' . $end_time;
                             ?>
                         </td>
                         <td>
                             <?php
-                            // 空き状況の表示
                             $total_people = $availability[$time]['total_people'];
                             if ($total_people >= 2) {
                                 echo '<span class="full">満席</span>';
