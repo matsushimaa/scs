@@ -11,10 +11,11 @@ function db_connect()
     }
 }
 
+// データベース接続
+$db = db_connect();
+
 // フォームが送信された場合の処理
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $db = db_connect();
-    
     $name = $_POST['name'];
     $time = $_POST['time'];
     $people_count = $_POST['people_count'];
@@ -24,24 +25,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bindParam(':name', $name);
     $stmt->bindParam(':time', $time);
     $stmt->bindParam(':people_count', $people_count);
+    $stmt->execute();
 
-    if ($stmt->execute()) {
-        // 成功時の処理
-        header("Location: confirm.php");
-        exit;
-    } else {
-        // エラー時の処理
-        echo "エラーが発生しました: " . implode(", ", $stmt->errorInfo());
-    }
+    // 確認ページにリダイレクト
+    header("Location: confirm.php");
+    exit;
 }
-
-// 予約時間をURLから取得
-$selected_time = isset($_GET['time']) ? $_GET['time'] : null;
-
 ?>
 
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -61,8 +55,21 @@ $selected_time = isset($_GET['time']) ? $_GET['time'] : null;
         h2 {
             color: #007bff; /* ヘッダーの色 */
         }
+        .form-control:focus {
+            border-color: #007bff; /* フォーカス時のボーダー色 */
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* フォーカス時の影 */
+        }
+        .btn-primary {
+            background-color: #007bff; /* ボタンの色 */
+            border-color: #007bff; /* ボタンのボーダー色 */
+        }
+        .btn-primary:hover {
+            background-color: #0056b3; /* ホバー時の色 */
+            border-color: #0056b3; /* ホバー時のボーダー色 */
+        }
     </style>
 </head>
+
 <body>
     <main class="container">
         <h2 class="text-center p-3">予約</h2>
@@ -73,25 +80,18 @@ $selected_time = isset($_GET['time']) ? $_GET['time'] : null;
             </div>
             <div class="mb-3">
                 <label for="time" class="form-label">予約時間:</label>
-                <?php if ($selected_time): ?>
+                <select class="form-select" id="time" name="time" required>
                     <?php
-                    // 終了時間を計算
-                    $end_time = date('H:i', strtotime($selected_time) + 3600);
+                    $start_time = strtotime('10:00');
+                    $end_time = strtotime('20:00');
+                    $interval = 30 * 60;
+                    for ($time = $start_time; $time < $end_time; $time += $interval) {
+                        $start = date('H:i', $time);
+                        $end = date('H:i', $time + $interval);
+                        echo "<option value=\"$start\">$start~$end</option>";
+                    }
                     ?>
-                    <input type="text" class="form-control" id="time" name="time" value="<?php echo htmlspecialchars($selected_time) . '~' . htmlspecialchars($end_time); ?>" readonly>
-                <?php else: ?>
-                    <select class="form-select" id="time" name="time" required>
-                        <?php
-                        $start_time = strtotime('10:00');
-                        $end_time = strtotime('20:00');
-                        for ($time = $start_time; $time <= $end_time; $time += 3600) {
-                            $time_str = date('H:i', $time);
-                            $next_time_str = date('H:i', $time + 3600);
-                            echo "<option value=\"$time_str\">$time_str~$next_time_str</option>";
-                        }
-                        ?>
-                    </select>
-                <?php endif; ?>
+                </select>
             </div>
             <div class="mb-3">
                 <label class="form-label">人数:</label><br>
@@ -113,4 +113,6 @@ $selected_time = isset($_GET['time']) ? $_GET['time'] : null;
         </div>
     </main>
 </body>
+
 </html>
+
