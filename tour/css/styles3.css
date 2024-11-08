@@ -1,0 +1,57 @@
+/*快速注册成功页面*/
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: #2c3e50;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10; 
+}
+.centered-content {
+    padding: 100px;
+    margin-top: 70px;
+    text-align: center;
+    height: 600px;
+    
+   
+  }
+  .centered-content h1 {
+    font-size: 35px;
+    
+  }
+  .centered-content p {
+    font-size: 20px;
+    
+  }
+  .size-label{
+    font-size: 20px;
+  }
+  .register-section {
+    padding: 50px;
+    background-color: #ecf0f1;
+    text-align: center;
+  }
+  .register-section h2 {
+    margin-bottom: 20px;
+  }
+  .register-section input {
+    display: block;
+    width: 60%;
+    margin: 10px auto;
+    padding: 15px;
+    font-size: 16px;
+  }
+  .register-section button {
+    padding: 15px 30px;
+    background-color: #3498db;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .register-section button:hover {
+    background-color: #2980b9;
+  }

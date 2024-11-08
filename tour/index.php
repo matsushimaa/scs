@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>旅行ホームページ</title>
@@ -12,7 +12,7 @@
         <div class="logo">旅行サイト</div>
         <nav>
         <ul class="nav-links">
-            <li><a href="#tour-list">旅行リスト</a></li>
+            <li><a href="list.php">旅行リスト</a></li>
             <li><a href="register/">ツアー登録</a></li>
             <li><a href="#contact">お問い合わせ</a></li>
         </ul>
@@ -45,7 +45,7 @@
 
   <section id="register" class="register-section">
     <h2>迅速登録</h2>
-    <form>
+    <form action="register/RegisterSuccess.php" method="post">
       <input type="text" placeholder="名前" required>
       <input type="email" placeholder="メールアドレス" required>
       <input type="tel" placeholder="電話番号" required>

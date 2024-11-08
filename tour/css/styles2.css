@@ -49,7 +49,7 @@
   /* 主视觉区 */
 .hero {
     text-align: center;
-    background: url('hero.jpg') no-repeat center center/cover;
+    background: url('./img/f26a.jpg') no-repeat center center/cover;
     height: 600px;
     color: white;
     display: flex;
@@ -60,6 +60,7 @@
   .hero h1 {
     font-size: 48px;
     margin-bottom: 10px;
+    
   }
   .hero p {
     font-size: 20px;
@@ -174,3 +175,5 @@
       width: 100%;
     }
   }
+
+  
