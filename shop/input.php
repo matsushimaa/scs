@@ -57,10 +57,16 @@ $selected_time = isset($_GET['time']) ? $_GET['time'] : null;
             border-radius: 8px; /* 角を丸く */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 影を追加 */
             background-color: #ffffff; /* コンテナの背景色 */
+            /* 画面幅の60%で中央配置 */
+            width: 60%; /* 横幅を60%に設定 */
         }
         h2 {
             color: #007bff; /* ヘッダーの色 */
         }
+        
+    </style>
+
+    
     </style>
 </head>
 <body>
@@ -109,7 +115,7 @@ $selected_time = isset($_GET['time']) ? $_GET['time'] : null;
 
         <div class="mt-3 text-center">
             <a class="btn btn-outline-primary" href="detail.php">予約状況画面へ</a>
-            <a class="btn btn-outline-primary" href="index.php">ホーム画面へ</a>
+            <a class="btn btn-outline-primary" href="index.php">ホーム画面に戻る</a>
         </div>
     </main>
 </body>

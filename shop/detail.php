@@ -54,6 +54,12 @@ foreach ($all_times as $time) {
     <title>予約状況</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        /* 画面幅の60%で中央配置 */
+        .container {
+            width: 60%; /* 横幅を60%に設定 */
+            margin: 0 auto; /* 中央に配置 */
+        }
+
         .full {
             color: red;
         }
@@ -65,13 +71,13 @@ foreach ($all_times as $time) {
         .available {
             color: green;
         }
+
     </style>
 </head>
 
 <body>
     <main class="container">
         <h2 class="text-center p-3">予約状況</h2>
-        <a href="input.php" class="btn btn-secondary mb-3">新規予約</a>
         <table class="table">
             <thead>
                 <tr>
@@ -96,7 +102,7 @@ foreach ($all_times as $time) {
                             if ($total_people >= 2) {
                                 echo '<span class="full">満席</span>';
                             } elseif ($total_people == 1) {
-                                echo '<span class="one-space">1人のみ空き</span>';
+                                echo '<span class="one-space">1席のみ空き</span>';
                             } else {
                                 echo '<span class="available">空きあり</span>';
                             }

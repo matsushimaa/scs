@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Crowd Level</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+  <style>
+    /* 緑色のアイコンのCSS  */
+    .icon1 {
+      width: 200px !important;
+      height: 40px !important;
+      border-radius: 10px;
+      border: 3px solid #fdfdfd;
+      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+      background-color: rgb(30, 254, 0);
+      font-size: 10px;
+    }
+    /* 橙色のアイコンのCSS  */
+    .icon2 {
+      width: 200px !important;
+      height: 40px !important;
+      border-radius: 10px;
+      border: 3px solid #fdfdfd;
+      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+      background-color: rgb(255, 198, 52);
+      font-size: 10px;
+    }
+    /* 赤色のアイコンのCSS  */
+    .icon3 {
+      width: 200px !important;
+      height: 40px !important;
+      border-radius: 10px;
+      border: 3px solid #fdfdfd;
+      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+      background-color: rgb(255, 0, 0);
+      font-size: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="mapid" style="width: 100%; height: 800px"></div>
+  <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+  <script>
+    var map = L.map('mapid').setView([35.45378052765312, 139.63589255447292], 17);
+
+    var gsi = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
+      attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
+    });
+
+    var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: "c <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
+    });
+
+    var baseMaps = {
+      "地理院地図" : gsi,
+      "OpenStreetMap" : osm
+    };
+    L.control.layers(baseMaps).addTo(map);
+    osm.addTo(map);
+
+    //1.キッチン大宮　MARK　IS　みなとみらい店
+    var myIcon1 = L.divIcon({ html: '<p style="color:white;text-align:center;">キッチン大宮　MARK　IS　みなとみらい店</p>', className: 'icon1', iconAnchor: [20,20] });
+    L.marker([35.4576806432697, 139.63170725752659], { icon: myIcon1 }).addTo(map);
+
+    //2.なかめのてっぺん　横浜みなとみらいを追加する。
+    var myIcon2 = L.divIcon({ html: '<p style="color:white;text-align:center;">なかめのてっぺん　横浜みなとみらい</p>', className: 'icon2', iconAnchor: [20,20] });
+    L.marker([35.4551469455313, 139.63191637102994], { icon: myIcon2 }).addTo(map);
+
+    //3.ブラッスリー　024を追加する。
+    var myIcon3 = L.divIcon({ html: '<p style="color:white;text-align:center;">ブラッスリー　024</p>', className: 'icon3', iconAnchor: [20,20] });
+    L.marker([35.46242994931264, 139.62753905753218], { icon: myIcon3 }).addTo(map);
+
+    //4.横浜ハンマーヘッドにマーカーを追加する。
+
+    //5.マリンアンドウォークヨコハマにマーカーを追加する。
+
+    //6.横浜赤レンガ倉庫にマーカーを追加する。
+
+
+    
+
+    //桜木町駅にマーカーを追加する。
+    var marker = L.marker([35.45116053227894,139.6310917445411]).addTo(map);
+    //上のマーカーにポップアップを追加する。
+    marker.bindPopup("桜木町駅").openPopup();
+
+  </script>
+</body>
+</html>
