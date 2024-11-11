@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $time = $_POST['time'];
     $people_count = $_POST['people_count'];
 
-    // 時間帯に対する予約人数をチェック
+    // 時間帯に対する予約人数を再確認
     $stmt = $db->prepare("SELECT SUM(people_count) AS total_people FROM reservations WHERE time = :time");
     $stmt->bindParam(':time', $time);
     $stmt->execute();
@@ -129,7 +129,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $disabled = false;
 
                             // 予約が埋まっている時間帯を無効化
-                            if ($can_reserve && $total_people >= 2) {
+                            if ($total_people >= 2) {
                                 $disabled = true;
                             }
 
