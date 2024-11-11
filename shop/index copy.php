@@ -6,79 +6,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clickable Links with Images and Text</title>
     <style>
-        /* 基本的なボディのスタイル */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
             padding: 20px;
-            margin: 0;
+            margin-bottom: 200px;
             background-color: #f9f9f9;
             background-image: url(../images/main.jpg);
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
         }
 
-        /* 背景のぼかしを加えるコンテナ */
         .container {
             max-width: 600px;
-            width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            padding: 30px;
-            background-color: rgba(255, 255, 255, 0.8);
-            /* 背景を透明にしてぼかしを強調 */
-            margin: auto;
-            backdrop-filter: blur(10px);
-            /* 背景をぼかす */
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
         }
 
-        /* リストアイテムのスタイル */
         .item {
             display: flex;
             align-items: center;
             padding: 15px;
-            margin-bottom: 12px;
-            border-radius: 10px;
-            background-color: #f9f9f9;
+            margin-bottom: 10px;
+            border-radius: 5px;
             text-decoration: none;
             color: #333;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            background-color: #f0f0f0;
+            transition: background-color 0.3s, transform 0.3s;
         }
 
         .item img {
-            width: 50px;
-            height: 50px;
-            margin-right: 15px;
+            width: 40px;
+            /* 画像の幅を大きく */
+            height: 40px;
+            /* 画像の高さを大きく */
+            margin-right: 10px;
             border-radius: 50%;
         }
 
         .item-text {
             flex-grow: 1;
-            font-size: 18px;
+            font-size: 20px;
+            /* テキストのサイズを増加 */
             font-weight: bold;
+            /* テキストを太字に */
             color: #2c3e50;
-            line-height: 1.4;
+            /* テキストの色を変更 */
         }
 
         .item-subtext {
             font-size: 14px;
+            /* フォントサイズを小さく */
             color: #777;
-            margin-top: 6px;
+            /* 色を薄くして目立たなくする */
+            margin-top: 5px;
+            /* 上部にマージンを追加 */
         }
 
-        /* ホバー効果 */
         .item:hover {
             background-color: #e0e0e0;
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         }
 
-        /* スマートフォン対応のレスポンシブ */
         @media (max-width: 600px) {
             .item {
                 flex-direction: column;
@@ -90,33 +83,25 @@
             }
         }
 
-        /* ホームボタンのスタイル */
+        /* ホームボタンのCSS */
         #homeButton {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 12px 25px;
+            position: absolute;
+            top: 25px;
+            left: 60px;
+            padding: 10px 20px;
             background-color: #007bff;
             color: white;
-            font-size: 18px;
-            font-weight: bold;
+            font-size: 16px;
             border: none;
-            border-radius: 50px;
+            border-radius: 5px;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
             z-index: 1000;
-            transition: background-color 0.3s, transform 0.3s;
+            text-decoration: none;  /* 下線を消す */
         }
 
         #homeButton:hover {
             background-color: #0056b3;
-            transform: translateY(-5px);
-        }
-
-        /* ボタンがクリックされた時のアクション */
-        #homeButton:active {
-            transform: translateY(0);
         }
     </style>
 </head>
@@ -133,25 +118,20 @@
         </a>
         <a href="detail.php?shop_id=2" class="item">
             <img src="../images/b.jpg" alt="画像2">
-            <div class="item-text">
-                なかめのてっぺん　横浜みなとみらい<br>
+            <div class="item-text">なかめのてっぺん　横浜みなとみらい<br>
                 <span class="item-subtext">あいうえお</span>
             </div>
         </a>
         <a href="detail.php?shop_id=3" class="item">
             <img src="../images/c.jpg" alt="画像3">
-            <div class="item-text">
-                ブラッスリー　024<br>
+            <div class="item-text">ブラッスリー　024<br>
                 <span class="item-subtext">あいうえお</span>
             </div>
         </a>
     </div>
-
-    <!-- ホームボタン -->
     <div class="text-center mt-3">
         <a href="http://172.16.2.22/SCS_html" id="homeButton" class="btn btn-primary">ホーム画面に戻る</a>
     </div>
-
 </body>
 
 </html>
