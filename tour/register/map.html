@@ -19,28 +19,9 @@
             color: white;
         }
 
-<<<<<<< HEAD
         .red {
             background-color: #ff0000;
         }
-=======
-        /* ホームボタンのCSS */
-        #homeButton {
-      position: absolute;
-      top: 25px;
-      left: 60px;
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: white;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-      z-index: 1000;
-      text-decoration: none;  /* 下線を消す */
-    }
->>>>>>> dec194415e6bed2ac9bb53c09afade7e9da3caa6
 
         .blue {
             background-color: #0008b0;
@@ -148,6 +129,13 @@
         var mapLocation = { lat: 35.45378052765312, lng: 139.63589255447292, magnification: 17 };
         var map, markers = [];
 
+        // 出発地
+        var departure = {
+            lat: 35.45116053227894,
+            lng: 139.6310917445411,
+            name: "桜木町駅"
+        };
+
         // 凡例データ（colorClass の範囲指定）
         var legendData = [
             { colorClass: 'red', min: 1000, max: 2000 },
@@ -155,7 +143,7 @@
             { colorClass: 'tomato', min: 600, max: 800 },
             { colorClass: 'coral', min: 400, max: 600 },
             { colorClass: 'green', min: 200, max: 400 },
-            { colorClass: 'blue', min: 100, max: 200 }
+            { colorClass: 'blue', min: 0, max: 200 }
         ];
 
         // ロケーション情報
@@ -215,8 +203,15 @@
                 attribution: "© OpenStreetMap contributors"
             }).addTo(map);
 
+            // 出発地のマーカーとポップアップ
+            var departureMarker = L.marker([departure.lat, departure.lng]).addTo(map);
+            departureMarker.bindPopup(departure.name).openPopup();
+
             // 初期マーカー表示
             updateMarkers();
+
+            // 外部リンク表示
+            showLink(map);
 
             // コントロールパネルに人数変更用の入力フィールドを生成
             var controlPanel = document.getElementById('control-panel');
@@ -239,6 +234,23 @@
                 controlPanel.appendChild(input);
                 controlPanel.appendChild(document.createElement('br'));
             });
+        }
+
+        function showLink(map) {
+            // 外部リンク
+            var gsi = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
+                attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
+            });
+            var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: "c <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
+            });
+
+            var baseMaps = {
+                "地理院地図": gsi,
+                "OpenStreetMap": osm
+            };
+            L.control.layers(baseMaps).addTo(map);
+            osm.addTo(map);
         }
 
         showMap();

@@ -63,12 +63,12 @@ if (isset($_GET['date'])) {
                 <!-- ダミーデータ -->
                 <tr>
                     <td>10:00</td>
-                    <td><a href="./" class="btn btn-success">ツアー登録</a></td>
+                    <td><a href="./register/?tour_id=1&ttime=10&tdate=<?= $date ?>" class="btn btn-success">ツアー登録</a></td>
                     <td>7/30</td>
                 </tr>
                 <tr>
                     <td>11:00</td>
-                    <td><a href="./" class="btn btn-success">ツアー登録</a></td>
+                    <td><a href="./register/?tour_id=1&ttime=11&tdate=<?= $date ?>" class="btn btn-success">ツアー登録</a></td>
                     <td>20/30</td>
                 </tr>
                 <tr>
