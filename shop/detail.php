@@ -4,10 +4,10 @@ function db_connect()
 {
     try {
         $db = new PDO('mysql:dbname=yoyakudb;host=127.0.0.1;charset=utf8', 'root', '');
-        return $db; // $dbを返す
+        return $db;
     } catch (PDOException $e) {
         echo 'DB接続エラー： ' . $e->getMessage();
-        exit; // スクリプト終了
+        exit;
     }
 }
 
@@ -71,7 +71,6 @@ foreach ($all_times as $time) {
         .available {
             color: green;
         }
-
     </style>
 </head>
 
@@ -98,7 +97,13 @@ foreach ($all_times as $time) {
                         </td>
                         <td>
                             <?php
-                            $total_people = $availability[$time]['total_people'];
+                            // キーが存在するか確認
+                            if (isset($availability[$time])) {
+                                $total_people = $availability[$time]['total_people'];
+                            } else {
+                                $total_people = 0; // デフォルト値
+                            }
+
                             if ($total_people >= 2) {
                                 echo '<span class="full">満席</span>';
                             } elseif ($total_people == 1) {
