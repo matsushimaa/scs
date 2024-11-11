@@ -1,13 +1,9 @@
 <?PHP
-$tcoop = $_POST['tcoop'];
-$tname = $_POST['tname'];
-$tdate = $_POST['tdate'];
-$ttime = $_POST['ttime'];
-$tplace = $_POST['tplace'];
-$tnum = $_POST['tnum'];
+$posts = $_POST;
 
 function db_connect()
 {
+    // TODO: outer file
     try {
         $db = new PDO('mysql:dbname=yoyakudb; host=127.0.0.1; charset=utf8', 'root', '');
         return $db;
@@ -17,18 +13,21 @@ function db_connect()
     }
 }
 
-function insert($tcoop, $tname, $tdate, $ttime, $tplace, $tnum)
+function insert($posts)
 {
-    $db = db_connect();
-    $sql = "INSERT INTO tour_reservations(TCoop,TName,TDate,TTime,TPlace,TNum) VALUES(" . $tcoop . "," . "'$tname'" . "," . "'$tdate'" . "," . $ttime . "," . $tplace . "," . $tnum . ")";
+    $sql = "INSERT INTO 
+                tour_reservations(tour_id, date, time, count, user_id) 
+                VALUES(:tour_id, :date, :time, :count, :user_id)";
 
-    print("正常に登録が完了しました");
-    $count = $db->query($sql);
-    $db = NULL;
-    return 0;
+    $pdo = db_connect();
+    $stmt = $pdo->prepare($sql);
+    return $stmt->execute($posts);
 }
 
-//TODO:
-insert($tcoop, $tname, $tdate, $ttime, $tplace, $tnum);
-
-header('Location: complete.php');
+try {
+    if (insert($posts)) {
+        header('Location: complete.php');
+    }
+} catch (\Throwable $th) {
+    header('Location: confirm.php');
+}

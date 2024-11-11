@@ -1,10 +1,22 @@
 <?php
+require_once "../models/Tour.php";
+
+// TODO: tour_idチェック
+// TODO: 予約定員チェック
+// TODO: 現在より前の日はエラーチェック
+// TODO: ツアー会社表示
+
+$tour_id = $_GET['tour_id'];
+
+$tour = new Tour();
+$tourData = $tour->fetch($tour_id);
+
 $date = date('Y-m-d');
 if (isset($_GET['date'])) {
     $date = $_GET['date'];
 }
 
-// TODO: search reservations
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -30,6 +42,7 @@ if (isset($_GET['date'])) {
                 </ul>
             </div>
             <div class="hamburger-menu" onclick="toggleMenu()">☰</div>
+        </div>
     </nav>
 
     <main class="container mt-5">
@@ -37,15 +50,16 @@ if (isset($_GET['date'])) {
 
         <!-- ツアー情報 -->
         <div class="mb-4">
-            <h4>ツアー名: 横浜ランドマークタワーツアー</h4>
-            <p>ツアー会社: JTB</p>
-            <p>料金: ¥5,000 | 定員: 30人</p>
+            <h4>ツアー名: <?= $tourData['name'] ?></h4>
+            <p>ツアー会社: </p>
+            <p>各定員: <?= $tourData['capacity'] ?>人</p>
         </div>
 
         <div class="mb-3">
             <h3 class="h3 p-3"><?= $date ?></h3>
             <form action="" method="get">
                 <input type="date" name="date" value="<?= $date ?>">
+                <input type="hidden" name="tour_id" value="<?= $tour_id ?>">
                 <button class="btn btn-primary">検索</button>
             </form>
         </div>
@@ -60,27 +74,19 @@ if (isset($_GET['date'])) {
                 </tr>
             </thead>
             <tbody>
-                <!-- ダミーデータ -->
-                <tr>
-                    <td>10:00</td>
-                    <td><a href="./register/?tour_id=1&ttime=10&tdate=<?= $date ?>" class="btn btn-success">ツアー登録</a></td>
-                    <td>7/30</td>
-                </tr>
-                <tr>
-                    <td>11:00</td>
-                    <td><a href="./register/?tour_id=1&ttime=11&tdate=<?= $date ?>" class="btn btn-success">ツアー登録</a></td>
-                    <td>20/30</td>
-                </tr>
-                <tr>
-                    <td>12:00</td>
-                    <td>満員</td>
-                    <td>30/30</td>
-                </tr>
+                <?php foreach ($tour->timeSlots as $time => $timeSlot): ?>
+                    <tr>
+                        <td><?= $timeSlot ?></td>
+                        <td><a href="./register/?tour_id=<?= $tour_id ?>&time=<?= $time ?>&date=<?= $date ?>" class="btn btn-success">ツアー登録</a></td>
+                        <td>0/<?= $tourData['capacity'] ?></td>
+                    </tr>
+                <?php endforeach ?>
             </tbody>
         </table>
 
         <!-- 戻るボタン -->
         <div class="text-center mt-3">
+            <a href="list.php" class="btn btn-outline-secondary">もどる</a>
             <a href="../" class="btn btn-outline-secondary">Top</a>
         </div>
     </main>
