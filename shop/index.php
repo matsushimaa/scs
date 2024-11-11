@@ -99,6 +99,9 @@
             <span class="item-subtext">あいうえお</span>
         </div>
         </a>
+        <div class="text-center mt-3">
+            <a href="http://localhost/SCS_html/index.html#section4" class="btn btn-primary">ホーム画面に戻る</a>
+        </div>
     </div>
 
 </body>

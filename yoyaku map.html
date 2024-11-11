@@ -8,7 +8,7 @@
     /* 緑色のアイコンのCSS  */
     .icon1 {
       width: 200px !important;
-      height: 40px !important;
+      height: 46px !important;
       border-radius: 10px;
       border: 3px solid #fdfdfd;
       box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
@@ -18,7 +18,7 @@
     /* 橙色のアイコンのCSS  */
     .icon2 {
       width: 200px !important;
-      height: 40px !important;
+      height: 46px !important;
       border-radius: 10px;
       border: 3px solid #fdfdfd;
       box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
@@ -28,17 +28,39 @@
     /* 赤色のアイコンのCSS  */
     .icon3 {
       width: 200px !important;
-      height: 40px !important;
+      height: 46px !important;
       border-radius: 10px;
       border: 3px solid #fdfdfd;
       box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
       background-color: rgb(255, 0, 0);
       font-size: 10px;
     }
+
+    /* ホームボタンのCSS */
+    #homeButton {
+      position: absolute;
+      top: 25px;
+      left: 60px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+    }
+
+    #homeButton:hover {
+      background-color: #0056b3;
+    }
   </style>
 </head>
 
 <body>
+  <a href="http://localhost/SCS_html/" id="homeButton" class="btn btn-primary">ホーム画面に戻る</a>
+
   <div id="mapid" style="width: 100%; height: 800px"></div>
   <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
   <script>
@@ -60,24 +82,16 @@
     osm.addTo(map);
 
     //1.キッチン大宮　MARK　IS　みなとみらい店
-    var myIcon1 = L.divIcon({ html: '<p style="color:white;text-align:center;">キッチン大宮　MARK　IS　みなとみらい店</p>', className: 'icon1', iconAnchor: [20,20] });
+    var myIcon1 = L.divIcon({ html: '<p style="color:white;text-align:center;">キッチン大宮　MARK　IS　みなとみらい店<br>空席</p>', className: 'icon1', iconAnchor: [20,20] });
     L.marker([35.4576806432697, 139.63170725752659], { icon: myIcon1 }).addTo(map);
 
     //2.なかめのてっぺん　横浜みなとみらいを追加する。
-    var myIcon2 = L.divIcon({ html: '<p style="color:white;text-align:center;">なかめのてっぺん　横浜みなとみらい</p>', className: 'icon2', iconAnchor: [20,20] });
+    var myIcon2 = L.divIcon({ html: '<p style="color:white;text-align:center;">なかめのてっぺん　横浜みなとみらい<br>1席のみ空き</p>', className: 'icon2', iconAnchor: [20,20] });
     L.marker([35.4551469455313, 139.63191637102994], { icon: myIcon2 }).addTo(map);
 
     //3.ブラッスリー　024を追加する。
-    var myIcon3 = L.divIcon({ html: '<p style="color:white;text-align:center;">ブラッスリー　024</p>', className: 'icon3', iconAnchor: [20,20] });
+    var myIcon3 = L.divIcon({ html: '<p style="color:white;text-align:center;">ブラッスリー　024<br>満席</p>', className: 'icon3', iconAnchor: [20,20] });
     L.marker([35.46242994931264, 139.62753905753218], { icon: myIcon3 }).addTo(map);
-
-    //4.横浜ハンマーヘッドにマーカーを追加する。
-
-    //5.マリンアンドウォークヨコハマにマーカーを追加する。
-
-    //6.横浜赤レンガ倉庫にマーカーを追加する。
-
-
     
 
     //桜木町駅にマーカーを追加する。
@@ -88,3 +102,4 @@
   </script>
 </body>
 </html>
+
