@@ -120,7 +120,7 @@ foreach ($all_times as $time) {
             </tbody>
         </table>
         <div class="text-center mt-3">
-            <a href="./" class="btn btn-primary">ホーム画面に戻る</a>
+            <a href="./" class="btn btn-primary">店舗一覧に戻る</a>
         </div>
     </main>
 </body>
