@@ -1,3 +1,19 @@
+<?php
+require_once "../../models/Tour.php";
+
+$tour = new Tour();
+$tourData = $tour->fetch($_POST['tour_id']);
+var_dump($tourData);
+exit;
+$tname = $_POST['tname'];
+$tdate = $_POST['tdate'];
+$ttime = $_POST['ttime'];
+$tplace = $_POST['tplace'];
+$tnum = $_POST['tnum'];
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,15 +25,6 @@
 </head>
 
 <body class="background-image">
-
-    <?php
-    $tcoop = $_POST['tcoop'];
-    $tname = $_POST['tname'];
-    $tdate = $_POST['tdate'];
-    $ttime = $_POST['ttime'];
-    $tplace = $_POST['tplace'];
-    $tnum = $_POST['tnum'];
-    ?>
     <h1 class="title">登録情報確認画面</h1>
     <div class="container">
         <div>
@@ -49,12 +56,12 @@
                     </td>
                     <tr>
                         <td><strong>ツアー名</strong></td>
-                        <td><?php echo $tname ?></td>
+                        <td><?= $tname ?></td>
                     </tr>
                     <tr>
                         <td><strong>ツアー年月日</strong></td>
                         <td>
-                            <?php echo $tdate ?>
+                            <?= $tdate ?>
                         </td>
                     </tr>
                     <tr>
@@ -124,20 +131,20 @@
                     <tr>
                         <td><strong>ツアー者数</strong></td>
                         <td>
-                            <?php echo $tnum ?>
+                            <?= $tnum ?>
                         </td>
                     </tr>
                 </table>
                 <p>
                 <form action="add.php" method="post">
-                    <input type="hidden" name="tcoop" value=<?php echo $tcoop ?>>
-                    <input type="hidden" name="tname" value=<?php echo $tname ?>>
-                    <input type="hidden" name="tdate" value=<?php echo $tdate ?>>
-                    <input type="hidden" name="ttime" value=<?php echo $ttime ?>>
-                    <input type="hidden" name="tplace" value=<?php echo $tplace ?>>
-                    <input type="hidden" name="tnum" value=<?php echo $tnum ?>>
+                    <input type="hidden" name="tcoop" value=<?= $tcoop ?>>
+                    <input type="hidden" name="tname" value=<?= $tname ?>>
+                    <input type="hidden" name="tdate" value=<?= $tdate ?>>
+                    <input type="hidden" name="ttime" value=<?= $ttime ?>>
+                    <input type="hidden" name="tplace" value=<?= $tplace ?>>
+                    <input type="hidden" name="tnum" value=<?= $tnum ?>>
 
-                    <input type="submit" value="確認" class="login-button">
+                    <input type="submit" value="登録" class="login-button">
                     <input type="button" onclick="history.back()" value="戻る" class="login-button">
                 </form>
                 </p>
