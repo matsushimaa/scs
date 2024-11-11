@@ -12,7 +12,7 @@
             padding: 20px;
             margin: 0;
             background-color: #f9f9f9;
-            background-image: url(../images/main.jpg);
+            background-image: url(../images/index.jpg);
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -92,31 +92,37 @@
 
         /* ホームボタンのスタイル */
         #homeButton {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 12px 25px;
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            padding: 10px 20px;
             background-color: #007bff;
             color: white;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
             border: none;
-            border-radius: 50px;
+            border-radius: 5px;
+            /* 四角形の角 */
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.8);
+            /* 初期の光を少しだけ */
             z-index: 1000;
-            transition: background-color 0.3s, transform 0.3s;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            /* 下線を消す */
         }
 
+        /* ホームボタンのホバー時のエフェクト */
         #homeButton:hover {
             background-color: #0056b3;
-            transform: translateY(-5px);
+            box-shadow: 0 0 15px rgba(0, 123, 255, 1), 0 0 25px rgba(0, 123, 255, 0.6);
+            /* 光るエフェクト */
         }
 
-        /* ボタンがクリックされた時のアクション */
+        /* ボタンがクリックされた時のアクション（動きなし） */
         #homeButton:active {
-            transform: translateY(0);
+            box-shadow: 0 0 10px rgba(0, 123, 255, 1);
+            /* クリック時の微光 */
         }
     </style>
 </head>
