@@ -15,9 +15,9 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-        } 
+        }
 
-        .container { 
+        .container {
             max-width: 600px;
             margin: 0 auto;
             border-radius: 8px;
@@ -39,23 +39,31 @@
         }
 
         .item img {
-            width: 40px; /* 画像の幅を大きく */
-            height: 40px; /* 画像の高さを大きく */
+            width: 40px;
+            /* 画像の幅を大きく */
+            height: 40px;
+            /* 画像の高さを大きく */
             margin-right: 10px;
             border-radius: 50%;
         }
 
         .item-text {
             flex-grow: 1;
-            font-size: 20px; /* テキストのサイズを増加 */
-            font-weight: bold; /* テキストを太字に */
-            color: #2c3e50; /* テキストの色を変更 */
+            font-size: 20px;
+            /* テキストのサイズを増加 */
+            font-weight: bold;
+            /* テキストを太字に */
+            color: #2c3e50;
+            /* テキストの色を変更 */
         }
 
         .item-subtext {
-            font-size: 14px; /* フォントサイズを小さく */
-            color: #777; /* 色を薄くして目立たなくする */
-            margin-top: 5px; /* 上部にマージンを追加 */
+            font-size: 14px;
+            /* フォントサイズを小さく */
+            color: #777;
+            /* 色を薄くして目立たなくする */
+            margin-top: 5px;
+            /* 上部にマージンを追加 */
         }
 
         .item:hover {
@@ -74,6 +82,27 @@
                 margin-bottom: 10px;
             }
         }
+
+        /* ホームボタンのCSS */
+        #homeButton {
+            position: absolute;
+            top: 25px;
+            left: 60px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            text-decoration: none;  /* 下線を消す */
+        }
+
+        #homeButton:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 
@@ -90,20 +119,19 @@
         <a href="detail.php?shop_id=2" class="item">
             <img src="../images/b.jpg" alt="画像2">
             <div class="item-text">なかめのてっぺん　横浜みなとみらい<br>
-            <span class="item-subtext">あいうえお</span>
-        </div>
+                <span class="item-subtext">あいうえお</span>
+            </div>
         </a>
         <a href="detail.php?shop_id=3" class="item">
             <img src="../images/c.jpg" alt="画像3">
             <div class="item-text">ブラッスリー　024<br>
-            <span class="item-subtext">あいうえお</span>
-        </div>
+                <span class="item-subtext">あいうえお</span>
+            </div>
         </a>
-        <div class="text-center mt-3">
-            <a href="http://localhost/SCS_html/index.html#section4" class="btn btn-primary">ホーム画面に戻る</a>
-        </div>
     </div>
-
+    <div class="text-center mt-3">
+        <a href="http://172.16.2.22/SCS_html" id="homeButton" class="btn btn-primary">ホーム画面に戻る</a>
+    </div>
 </body>
 
 </html>
