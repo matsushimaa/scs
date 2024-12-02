@@ -1,5 +1,6 @@
 <?php
 require_once "../models/Tour.php";
+require_once "../models/TourReservation.php";
 
 // TODO: tour_idチェック
 // TODO: 予約定員チェック
@@ -16,8 +17,10 @@ if (isset($_GET['date'])) {
     $date = $_GET['date'];
 }
 
-
+$tour_reservation = new TourReservation();
+$reservation_counts = $tour_reservation->getReservationCounts($tour_id, $date);
 ?>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -78,7 +81,15 @@ if (isset($_GET['date'])) {
                     <tr>
                         <td><?= $timeSlot ?></td>
                         <td><a href="./register/?tour_id=<?= $tour_id ?>&time=<?= $time ?>&date=<?= $date ?>" class="btn btn-success">ツアー登録</a></td>
-                        <td>0/<?= $tourData['capacity'] ?></td>
+                        <td>
+                            <?php if (empty($reservation_counts[$time])): ?>
+                            0
+                            <?php else: ?>
+                            <?= $reservation_counts[$time] ?>
+                            <?php endif ?>
+                            /
+                            <?= $tourData['capacity'] ?>
+                        </td>
                     </tr>
                 <?php endforeach ?>
             </tbody>
