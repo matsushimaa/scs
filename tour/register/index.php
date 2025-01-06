@@ -57,7 +57,6 @@ $tours = $tour->getList();
                 type="number"
                 name="count"
                 min="0"
-                max="10"
                 class="sele" />
             </label>
           </p>

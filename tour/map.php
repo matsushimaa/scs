@@ -126,7 +126,11 @@
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
     <script>
         // マップ位置
-        var mapLocation = { lat: 35.45378052765312, lng: 139.63589255447292, magnification: 17 };
+        var mapLocation = {
+            lat: 35.45378052765312,
+            lng: 139.63589255447292,
+            magnification: 17
+        };
         var map, markers = [];
 
         // 出発地
@@ -137,29 +141,59 @@
         };
 
         // 凡例データ（colorClass の範囲指定）
-        var legendData = [
-            { colorClass: 'red', min: 1000, max: 2000 },
-            { colorClass: 'orangered', min: 800, max: 1000 },
-            { colorClass: 'tomato', min: 600, max: 800 },
-            { colorClass: 'coral', min: 400, max: 600 },
-            { colorClass: 'green', min: 200, max: 400 },
-            { colorClass: 'blue', min: 0, max: 200 }
+        var legendData = [{
+                colorClass: 'red',
+                min: 1000,
+                max: 2000
+            },
+            {
+                colorClass: 'orangered',
+                min: 800,
+                max: 1000
+            },
+            {
+                colorClass: 'tomato',
+                min: 600,
+                max: 800
+            },
+            {
+                colorClass: 'coral',
+                min: 400,
+                max: 600
+            },
+            {
+                colorClass: 'green',
+                min: 200,
+                max: 400
+            },
+            {
+                colorClass: 'blue',
+                min: 0,
+                max: 200
+            }
         ];
 
         // ロケーション情報
-        var locations = [
-            { id: 1, lat: 35.45511168509241, lng: 139.6314074802348, name: '横浜ランドマークタワー', count: 1750 },
-            { id: 2, lat: 35.45378571465553, lng: 139.63263289630348, name: '日本丸メモリアルパーク', count: 198 },
-            { id: 3, lat: 35.45601733791626, lng: 139.6388669, name: 'カップヌードルミュージアム横浜', count: 780 },
-            { id: 4, lat: 35.455335, lng: 139.640664, name: '横浜ハンマーヘッド', count: 550 },
-            { id: 5, lat: 35.45476714030414, lng: 139.64212454066205, name: 'マリンアンドウォークヨコハマ', count: 380 },
-            { id: 6, lat: 35.45283968507287, lng: 139.64281265255195, name: '横浜赤レンガ倉庫', count: 960 },
-        ];
+        var locations = [];
+
+        function getTours() {
+            // APIからデータを取得
+            fetch('http://localhost/scs/api/tour/get.php')
+                .then(response => response.json())
+                .then(data => {
+                    locations = data;
+                    updateMarkers();
+                    createPanel();
+                })
+                .catch(error => {
+                    console.error('Error fetching reservation counts:', error);
+                });
+        }
 
         // 凡例をHTMLに追加
         function createLegend() {
             var legendContainer = document.getElementById('legend');
-            legendData.forEach(function (item) {
+            legendData.forEach(function(item) {
                 var legendItem = document.createElement('p');
                 legendItem.innerHTML = `<span class="square ${item.colorClass}-square"></span>${item.min}-${item.max}人`;
                 legendContainer.appendChild(legendItem);
@@ -183,14 +217,16 @@
         function updateMarkers() {
             markers.forEach(marker => map.removeLayer(marker)); // 既存マーカーを削除
             markers = []; // マーカー配列をクリア
-            locations.forEach(function (location) {
+            locations.forEach(function(location) {
                 var colorClass = getColorClass(location.count);
                 var icon = L.divIcon({
-                    html: `<div>${location.name}</div><div>${location.count}人</div>`,
+                    html: `<div>${location.place}</div><div>${location.count}人</div>`,
                     className: `icon ${colorClass}`,
                     iconAnchor: [20, 20]
                 });
-                var marker = L.marker([location.lat, location.lng], { icon: icon }).addTo(map);
+                var marker = L.marker([location.lat, location.lng], {
+                    icon: icon
+                }).addTo(map);
                 markers.push(marker);
             });
         }
@@ -212,16 +248,18 @@
 
             // 外部リンク表示
             showLink(map);
+        }
 
+        function createPanel() {
             // コントロールパネルに人数変更用の入力フィールドを生成
             var controlPanel = document.getElementById('control-panel');
-            locations.forEach(function (location) {
+            locations.forEach(function(location) {
                 var input = document.createElement('input');
                 input.type = 'number';
                 input.value = location.count;
                 input.step = 10;
                 input.id = `count-input-${location.id}`;
-                input.onchange = function () {
+                input.onchange = function() {
                     var newCount = parseInt(input.value, 10);
                     if (!isNaN(newCount)) {
                         location.count = newCount;
@@ -253,6 +291,7 @@
             osm.addTo(map);
         }
 
+        getTours();
         showMap();
     </script>
 </body>
