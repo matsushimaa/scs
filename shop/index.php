@@ -113,7 +113,6 @@
 </head>
 
 <body>
-
     <div class="container" id="linkContainer">
         <a href="detail.php?shop_id=1" class="item">
             <img src="../images/a.jpg" alt="画像1">
