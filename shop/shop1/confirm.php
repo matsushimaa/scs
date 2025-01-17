@@ -36,7 +36,7 @@
                 <a href="./detail.php" class="btn btn-primary">予約状況画面へ</a>
             </div>
             <div class="text-center mt-3">
-                <a href="./" class="btn btn-secondary">ホーム画面に戻る</a>
+                <a href="../index.php" class="btn btn-secondary">ホーム画面に戻る</a>
             </div>
         </div>
     </main>

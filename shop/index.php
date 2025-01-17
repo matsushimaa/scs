@@ -114,7 +114,7 @@
 
 <body>
     <div class="container" id="linkContainer">
-        <a href="detail.php?shop_id=1" class="item">
+        <a href="./shop1/detail.php" id="1" class="item">
             <img src="../images/a.jpg" alt="画像1">
             <div class="item-text">
                 <div class="item-title">
@@ -128,7 +128,7 @@
                 </div>
             </div>
         </a>
-        <a href="detail.php?shop_id=2" class="item">
+        <a href="./shop2/detail.php" id="2" class="item">
             <img src="../images/b.jpg" alt="画像2">
             <div class="item-text">
                 <div class="item-title">
@@ -142,7 +142,7 @@
                 </div>
             </div>
         </a>
-        <a href="detail.php?shop_id=3" class="item">
+        <a href="./shop3/detail.php" id="3" class="item">
             <img src="../images/c.jpg" alt="画像3">
             <div class="item-text">
                 <div class="item-title">

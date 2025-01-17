@@ -15,8 +15,8 @@ function db_connect()
 $db = db_connect();
 
 // データベースから予約情報を取得（同じ時間の予約をグループ化）
-$stmt = $db->query("SELECT time, SUM(people_count) AS total_people FROM reservations GROUP BY time ORDER BY time ASC");
-$reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$stmt = $db->query("SELECT time, SUM(people_count) AS total_people FROM reservations3 GROUP BY time ORDER BY time ASC");
+$reservations3 = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // 全ての時間を生成（例: 10:00から20:00まで1時間ごと）
 $all_times = [];
@@ -31,15 +31,15 @@ for ($time = $start_time; $time <= $end_time; $time += 3600) {
 $availability = [];
 foreach ($all_times as $time) {
     $availability[$time] = ['total_people' => 0]; // 初期値を設定
-    foreach ($reservations as $reservation) {
+    foreach ($reservations3 as $reservation3) {
         // 時間範囲を分割
-        list($start_time, $end_time) = explode('~', $reservation['time']);
+        list($start_time, $end_time) = explode('~', $reservation3['time']);
         $start_time = trim($start_time);
         $end_time = trim($end_time);
 
         // 現在の時間がこの範囲にあるかを確認
         if ($time >= $start_time && $time < $end_time) {
-            $availability[$time]['total_people'] += $reservation['total_people'];
+            $availability[$time]['total_people'] += $reservation3['total_people'];
         }
     }
 }
@@ -125,7 +125,7 @@ foreach ($all_times as $time) {
             </tbody>
         </table>
         <div class="text-center mt-3">
-            <a href="./" class="btn btn-primary">店舗一覧に戻る</a>
+            <a href="../index.php" class="btn btn-primary">店舗一覧に戻る</a>
         </div>
     </main>
 </body>
