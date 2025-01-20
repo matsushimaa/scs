@@ -7,7 +7,6 @@
     <title>Clickable Links with Images and Text</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             padding: 20px;
             margin-bottom: 200px;
             background-color: #f9f9f9;
@@ -15,6 +14,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            /* font-family: Arial, sans-serif; を削除してデフォルトフォントに戻す */
         }
 
         .container {
@@ -27,8 +27,8 @@
         }
 
         .item {
-            display: flex;
-            align-items: center;
+            display: flex;  /* 画像とテキストを横並びにする */
+            align-items: flex-start;  /* 画像とテキストを縦方向に揃え */
             padding: 20px;
             margin-bottom: 20px;
             border-radius: 10px;
@@ -39,29 +39,37 @@
         }
 
         .item img {
-            width: 100px;  /* 画像の幅を大きく */
-            height: 100px;  /* 画像の高さを大きく */
-            margin-right: 20px;
+            width: 200px;  /* 画像の幅を大きく */
+            height: 200px;  /* 画像の高さを大きく */
+            margin-right: 20px;  /* 画像とテキストの間にスペースを追加 */
             border-radius: 10px;
         }
 
         .item-text {
-            flex-grow: 1;
-            font-size: 24px;  /* テキストサイズをさらに大きく */
-            font-weight: bold;
+            display: flex;
+            flex-direction: column;  /* テキストを縦に並べる */
+            justify-content: space-between;  /* 各部分の間隔を均等に */
+            flex-grow: 1;  /* テキスト部分が画像の横に広がる */
+            font-size: 25px;
             color: #2c3e50;
         }
 
-        .item-subtext {
-            font-size: 16px;  /* サブテキストのサイズを大きく */
+        .item-title {
+            font-size: 25px;
+            font-weight: bold;
+            margin-bottom: 10px; /* タイトルとサブテキストの間の隙間を調整 */
+        }
+
+        .item-subtext,
+        .item-description {
+            font-size: 16px;  /* サイズを少し小さく */
             color: #777;
-            margin-top: 5px;
+            margin-bottom: 15px;
         }
 
         .item-description {
             font-size: 18px;  /* お店の紹介テキストのサイズ */
             color: #555;
-            margin-top: 10px;
         }
 
         .item:hover {
@@ -105,36 +113,51 @@
 </head>
 
 <body>
-
     <div class="container" id="linkContainer">
-        <a href="detail.php?shop_id=1" class="item">
+        <a href="./shop1/detail.php" id="1" class="item">
             <img src="../images/a.jpg" alt="画像1">
             <div class="item-text">
-                キッチン大宮　MARK　IS　みなとみらい店<br>
-                <span class="item-subtext">あいうえお</span>
-            </div>
-            <div class="item-description">
-                <p>美味しい料理と素晴らしいサービスが自慢のお店です。おしゃれな雰囲気の中で、心地よいひと時をお楽しみください。</p>
+                <div class="item-title">
+                    キッチン大宮　MARK　IS　みなとみらい店
+                </div>
+                <div class="item-subtext">
+                    神奈川県横浜市西区みなとみらい3-5-1 MARK IS みなとみらい 4F <br>
+                    朝：1,500円　夜：4,000円　桜木町駅 徒歩7分
+                </div>
+                <div class="item-description">
+                    美味しい料理と素晴らしいサービスが自慢のお店です。おしゃれな雰囲気の中で、心地よいひと時をお楽しみください。<br>
+                </div>
             </div>
         </a>
-        <a href="detail.php?shop_id=2" class="item">
+        <a href="./shop2/detail.php" id="2" class="item">
             <img src="../images/b.jpg" alt="画像2">
             <div class="item-text">
-                なかめのてっぺん<br>横浜みなとみらい
-                <span class="item-subtext">あいうえお</span>
-            </div>
-            <div class="item-description">
-                <p>横浜の美しい景色と共に、絶品の料理を堪能できるお店です。お客様に最高の体験を提供します。</p>
+                <div class="item-title">
+                    なかめのてっぺん横浜みなとみらい
+                </div>
+                <div class="item-subtext">
+                神奈川県横浜市西区みなとみらい2-2-1 ランドマークプラザドックヤードガーデン B2F <br>
+                居酒屋 和食 海鮮料理　ディナー：4000円　みなとみらい駅 徒歩3分
+                </div>
+                <div class="item-description">
+                    横浜の美しい景色と共に、絶品の料理を堪能できるお店です。お客様に最高の体験を提供します。
+                </div>
             </div>
         </a>
-        <a href="detail.php?shop_id=3" class="item">
+        <a href="./shop3/detail.php" id="3" class="item">
             <img src="../images/c.jpg" alt="画像3">
             <div class="item-text">
-                ブラッスリー　024<br>
-                <span class="item-subtext">あいうえお</span>
-            </div>
-            <div class="item-description">
-                <p>フランス料理をベースにした独創的なメニューをご提供します。厳選した食材で作られた料理の数々をお楽しみください。</p>
+                <div class="item-title">
+                    ブラッスリー　024
+                </div>
+                <div class="item-subtext">                    
+                神奈川県横浜市西区みなとみらい5-1-1 <br>
+                フレンチ　ディナー：7000円　ランチ：2000円　横浜駅 徒歩8分
+
+                </div>
+                <div class="item-description">
+                    フランス料理をベースにした独創的なメニューをご提供します。厳選した食材で作られた料理の数々をお楽しみください。
+                </div>
             </div>
         </a>
     </div>
