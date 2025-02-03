@@ -80,20 +80,20 @@
 <body>
 
     <div class="container" id="linkContainer">
-        <a href="../tenpo itiran/tenpo1/db_connect.php" class="item">
+        <a href="../shop/staff detail.php" class="item">
             <img src="tenpo1/a.jpg" alt="画像1">
             <div class="item-text">
                 キッチン大宮　MARK　IS　みなとみらい店<br>
                 <span class="item-subtext">あいうえお</span> <!-- 追加した行 -->
             </div>
         </a>
-        <a href="page2.php" class="item">
+        <a href="../shop/staff detail2.php" class="item">
             <img src="tenpo1/b.jpg" alt="画像2">
             <div class="item-text">なかめのてっぺん　横浜みなとみらい<br>
             <span class="item-subtext">あいうえお</span>
         </div>
         </a>
-        <a href="page3.html" class="item">
+        <a href="../shop/staff detail3.php" class="item">
             <img src="tenpo1/c.jpg" alt="画像3">
             <div class="item-text">ブラッスリー　024<br>
             <span class="item-subtext">あいうえお</span>

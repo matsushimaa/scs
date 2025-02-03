@@ -28,17 +28,29 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>予約状況</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        /* 表の列を中央揃えにする */
+        th, td {
+            text-align: center;
+        }
+        /* テーブルの幅を設定 */
+        table {
+            width: 100%;
+        }
+        /* 余白調整 */
+        .table th, .table td {
+            padding: 12px;
+        }
+    </style>
 </head>
 
 <body>
     <main class="container">
         <h2 class="text-center p-3">予約状況</h2>
-        <a href="input.php">新規予約</a>
-        <table class="table">
+        <table class="table table-bordered">
             <thead>
                 <tr>
                     <th scope="col">時間</th>
-                    <th></th>
                     <th scope="col">名前</th>
                     <th scope="col">人数</th>
                 </tr>
@@ -55,9 +67,6 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             echo $start_time . '~' . $end_time;
                             ?>
                         </td>
-                        <td>
-                            <a href="input.php">予約</a>
-                        </td>
                         <td><?php echo htmlspecialchars($reservation['name']); ?></td>
                         <td><?php echo htmlspecialchars($reservation['people_count']); ?>人</td>
                     </tr>
@@ -65,7 +74,7 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </tbody>
         </table>
         <div class="text-center mt-3">
-            <a href="./" class="btn btn-primary">ホーム画面に戻る</a>
+            <a href="../shop/index.php" class="btn btn-primary">ホーム画面に戻る</a>
         </div>
     </main>
 </body>
